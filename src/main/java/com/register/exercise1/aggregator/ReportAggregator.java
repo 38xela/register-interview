@@ -1,6 +1,5 @@
 package com.register.exercise1.aggregator;
 
-
 import com.register.exercise1.model.LogEntry;
 import com.register.exercise1.model.ReportEntry;
 
@@ -30,16 +29,11 @@ public class ReportAggregator {
         return aggregatePerIpValues.entrySet().stream().map(entry -> {
                     long requestCount = entry.getValue()[0];
                     long bytesCount = entry.getValue()[1];
-                    return new ReportEntry(entry.getKey(), entry.getValue()[0], requestCount / totalEntries * 100.0, bytesCount, bytesCount / totalBytes * 100.0);
+                    double requestPerc = (requestCount * 100.0) / totalEntries;
+                    double bytesPerc = (bytesCount * 100.0) / totalBytes;
+                    return new ReportEntry(entry.getKey(), entry.getValue()[0], requestPerc, bytesCount, bytesPerc);
                 }).sorted(Comparator.comparingLong(ReportEntry::requestCount).reversed())
                 .toList();
 
-    }
-
-    private long[] sumValues(long[] current, LogEntry logEntry){
-        return new long[]{
-                current[0]++,
-                current[1] + logEntry.bytes()
-        };
     }
 }
