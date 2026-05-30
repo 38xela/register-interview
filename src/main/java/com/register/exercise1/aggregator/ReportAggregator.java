@@ -32,7 +32,8 @@ public class ReportAggregator {
                     double requestPerc = (requestCount * 100.0) / totalEntries;
                     double bytesPerc = (bytesCount * 100.0) / totalBytes;
                     return new ReportEntry(entry.getKey(), entry.getValue()[0], requestPerc, bytesCount, bytesPerc);
-                }).sorted(Comparator.comparingLong(ReportEntry::requestCount).reversed())
+                }).sorted(Comparator.comparingLong(ReportEntry::requestCount).reversed()
+                        .thenComparing(ReportEntry::ipAddress))
                 .toList();
 
     }
