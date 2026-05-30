@@ -9,6 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Writes the report as a JSON array.
+ * No external library used. Percentages are formatted to two decimal places.
+ */
 public class JsonReportWriter implements ReportWriter{
 
     @Override
