@@ -70,4 +70,20 @@ public class ReportAggregatorTest {
         assertEquals(0, result.size());
     }
 
+    @Test
+    void tiedRequestCount_sortedAlphabeticallyByIp() {
+        List<LogEntry> entries = List.of(
+                new LogEntry("2024-01-01", 100L, "200", "9.9.9.9"),
+                new LogEntry("2024-01-01", 200L, "200", "1.1.1.1"),
+                new LogEntry("2024-01-01", 300L, "200", "5.5.5.5")
+        );
+
+        List<ReportEntry> result = new ReportAggregator().aggregate(entries);
+
+        assertEquals(3, result.size());
+        assertEquals("1.1.1.1", result.get(0).ipAddress());
+        assertEquals("5.5.5.5", result.get(1).ipAddress());
+        assertEquals("9.9.9.9", result.get(2).ipAddress());
+    }
+
 }
