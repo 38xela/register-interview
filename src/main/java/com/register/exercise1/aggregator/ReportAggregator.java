@@ -5,8 +5,18 @@ import com.register.exercise1.model.ReportEntry;
 
 import java.util.*;
 
+/**
+ * Aggregates log entries by IP address and computes request/byte statistics.
+ */
 public class ReportAggregator {
 
+    /**
+     * Groups entries by IP, computes counts, totals, and percentages.
+     * Results are sorted by request count descending, then by IP alphabetically.
+     *
+     * @param logEntries list of filtered log entries
+     * @return aggregated report rows, empty list if input is empty
+     */
     public List<ReportEntry> aggregate(List<LogEntry> logEntries) {
         if(logEntries.isEmpty()) return Collections.emptyList();
 

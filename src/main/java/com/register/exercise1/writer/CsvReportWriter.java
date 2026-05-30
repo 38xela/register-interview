@@ -9,7 +9,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Writes the report as a CSV file with a header row.
+ * Percentages are formatted to two decimal places.
+ */
 public class CsvReportWriter implements ReportWriter{
+
     @Override
     public void write(List<ReportEntry> entries, Path outputPath) throws IOException {
         try (BufferedWriter writer = Files.newBufferedWriter(outputPath, StandardCharsets.UTF_8)) {

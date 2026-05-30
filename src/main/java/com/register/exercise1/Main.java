@@ -14,6 +14,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Entry point for the IP address daily report batch job.
+ *
+ * <p>Reads access logs from {@code logfiles/requests.log},
+ * aggregates traffic by IP, and writes the report to {@code reports/ipaddr.<format>}.
+ *
+ * <p>Usage:
+ * <pre>
+ *   java -cp ... com.register.exercise1.Main [--format csv|json]
+ * </pre>
+ */
 public class Main {
 
     private static final String INPUT_PATH = "logfiles/requests.log";
