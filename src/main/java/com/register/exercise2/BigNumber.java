@@ -35,4 +35,12 @@ public class BigNumber {
 
         return carry > 0 ? result : Arrays.copyOf(result, maxLen);
     }
+
+    public static String toString(int[] digits) {
+        StringBuilder sb = new StringBuilder();
+        for (int d : digits) {
+            sb.append(d);
+        }
+        return sb.reverse().toString();
+    }
 }
