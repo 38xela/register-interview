@@ -102,3 +102,44 @@ src/main/java/com/register/exercise1/
     └── JsonReportWriter.java # JSON implementation
 ```
 
+---
+
+# Exercise 2 - Big Number Multiplication via Addition
+
+Multiplies integers using only the addition operator, storing numbers as arrays of digits.
+Supports arbitrarily large numbers — demonstrated by computing 100! (158 digits).
+
+## Build
+
+```bash
+mvn -q -DskipTests package
+```
+
+## Run
+
+```bash
+java -cp target/register-interview-0.1.0-SNAPSHOT.jar com.register.exercise2.Main
+```
+
+Expected output:
+
+```
+15 x 2 = 30
+100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+```
+
+## Run Tests
+
+```bash
+mvn test
+```
+
+## Project Structure
+
+```
+src/main/java/com/register/exercise2/
+├── Main.java          # Entry point, prints 15x2 and 100!
+├── BigNumber.java     # Digit array representation: toDigits, add, toString
+└── Multiplier.java    # multiply, addNTimes (private), factorial
+```
+
