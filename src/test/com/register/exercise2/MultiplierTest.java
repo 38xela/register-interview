@@ -25,5 +25,8 @@ class MultiplierTest {
         assertArrayEquals(Multiplier.multiply(3, 4), Multiplier.multiply(4, 3));
     }
 
-    
+    @Test
+    void factorial_zero_returnsOne() {
+        assertArrayEquals(new int[]{1}, Multiplier.factorial(0));
+    }
 }

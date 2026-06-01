@@ -12,4 +12,8 @@ public class Multiplier {
         }
         return result;
     }
+
+    public static int[] factorial(int i) {
+        return null;
+    }
 }
