@@ -29,4 +29,16 @@ class BigNumberTest {
     void add_withCarry_propagatesCorrectly() {
         assertArrayEquals(new int[]{0, 1}, BigNumber.add(new int[]{9}, new int[]{1}));
     }
+
+    @Test
+    void add_carryPropagatesMultipleDigits_returnsCorrectArray() {
+        // 99 + 1 = 100 → [0, 0, 1]
+        assertArrayEquals(new int[]{0, 0, 1}, BigNumber.add(new int[]{9, 9}, new int[]{1}));
+    }
+
+    @Test
+    void add_differentLengths_returnsCorrectSum() {
+        // 25 + 8 = 33 → [3, 3]
+        assertArrayEquals(new int[]{3, 3}, BigNumber.add(new int[]{5, 2}, new int[]{8}));
+    }
 }
