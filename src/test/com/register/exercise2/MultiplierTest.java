@@ -29,4 +29,27 @@ class MultiplierTest {
     void factorial_zero_returnsOne() {
         assertArrayEquals(new int[]{1}, Multiplier.factorial(0));
     }
+
+    @Test
+    void factorial_one_returnsOne() {
+        assertArrayEquals(new int[]{1}, Multiplier.factorial(1));
+    }
+
+    @Test
+    void factorial_five_returns120() {
+        assertArrayEquals(new int[]{0, 2, 1}, Multiplier.factorial(5));
+    }
+
+    @Test
+    void factorial_ten_returns3628800() {
+        assertArrayEquals(new int[]{0, 0, 8, 8, 2, 6, 3}, Multiplier.factorial(10));
+    }
+
+    @Test
+    void factorial_100_has158Digits() {
+        int[] result = Multiplier.factorial(100);
+        assertEquals(158, result.length);
+        assertEquals(0, result[0]);   // last digit is 0
+        assertEquals(9, result[157]); // first digit is 9
+    }
 }

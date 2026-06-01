@@ -13,7 +13,11 @@ public class Multiplier {
         return result;
     }
 
-    public static int[] factorial(int i) {
-        return null;
+    public static int[] factorial(int n) {
+        int[] result = BigNumber.toDigits(1);
+        for (int k = 2; k <= n; k++) {
+            result = addNTimes(result, k);
+        }
+        return result;
     }
 }
