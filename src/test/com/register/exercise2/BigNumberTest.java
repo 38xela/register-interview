@@ -19,4 +19,14 @@ class BigNumberTest {
     void toDigits_zero_returnsSingleZero() {
         assertArrayEquals(new int[]{0}, BigNumber.toDigits(0));
     }
+
+    @Test
+    void add_noCarry_returnsSum() {
+        assertArrayEquals(new int[]{3}, BigNumber.add(new int[]{1}, new int[]{2}));
+    }
+
+    @Test
+    void add_withCarry_propagatesCorrectly() {
+        assertArrayEquals(new int[]{0, 1}, BigNumber.add(new int[]{9}, new int[]{1}));
+    }
 }

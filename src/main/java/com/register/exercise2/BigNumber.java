@@ -16,4 +16,23 @@ public class BigNumber {
         }
         return digits.stream().mapToInt(Integer::intValue).toArray();
     }
+
+
+    public static int[] add(int[] a, int[] b) {
+        int maxLen = Math.max(a.length, b.length);
+        int[] result = new int[maxLen + 1];
+        int carry = 0;
+
+        for (int i = 0; i < maxLen; i++) {
+            int digitA = i < a.length ? a[i] : 0;
+            int digitB = i < b.length ? b[i] : 0;
+            int sum = digitA + digitB + carry;
+            result[i] = sum % 10;
+            carry = sum / 10;
+        }
+
+        result[maxLen] = carry;
+
+        return carry > 0 ? result : Arrays.copyOf(result, maxLen);
+    }
 }
