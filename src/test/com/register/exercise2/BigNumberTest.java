@@ -41,4 +41,9 @@ class BigNumberTest {
         // 25 + 8 = 33 → [3, 3]
         assertArrayEquals(new int[]{3, 3}, BigNumber.add(new int[]{5, 2}, new int[]{8}));
     }
+
+    @Test
+    void toString_multiDigit_returnsCorrectString() {
+        assertEquals("123", BigNumber.toString(new int[]{3, 2, 1}));
+    }
 }
