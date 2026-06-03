@@ -81,7 +81,7 @@ ipAddress,requests,requestsPct,bytes,bytesPct
 ## Run Tests
 
 ```bash
-mvn test
+mvn test -Dtest="com.register.exercise1.**"
 ```
 
 ## Project Structure
@@ -131,7 +131,7 @@ Expected output:
 ## Run Tests
 
 ```bash
-mvn test
+mvn test -Dtest="com.register.exercise2.**"
 ```
 
 ## Project Structure
