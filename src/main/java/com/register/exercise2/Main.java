@@ -1,12 +1,12 @@
 package com.register.exercise2;
 
+/**
+ * Entry point for exercise 2.
+ * Demonstrates integer multiplication via addition with the exercise example (15 x 2)
+ * and computes 100! to verify large number support.
+ */
 public class Main {
 
-    /**
-     * Entry point for exercise 2.
-     * Demonstrates integer multiplication via addition with the exercise example (15 x 2)
-     * and computes 100! to verify large number support.
-     */
     public static void main(String[] args) {
         // Exercise example: 15 x 2
         int[] result = Multiplier.multiply(15, 2);
