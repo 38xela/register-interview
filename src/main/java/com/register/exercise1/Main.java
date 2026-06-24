@@ -1,6 +1,7 @@
 package com.register.exercise1;
 
 import com.register.exercise1.aggregator.ReportAggregator;
+import com.register.exercise1.config.Config;
 import com.register.exercise1.model.LogEntry;
 import com.register.exercise1.model.ReportEntry;
 import com.register.exercise1.parser.LogParser;
@@ -26,12 +27,10 @@ import java.util.List;
 public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    private static final String INPUT_PATH = "logfiles/requests.log";
-    private static final String OUTPUT_DIR = "reports";
-    private static final String DEFAULT_FORMAT = "csv";
-
     public static void main(String[] args) {
-        String format = DEFAULT_FORMAT;
+        Config config = new Config();
+
+        String format = config.defaultFormat();
 
         for (int i = 0; i < args.length - 1; i++) {
             if (args[i].equals("--format")) {
@@ -41,12 +40,11 @@ public class Main {
 
         if (!format.equals("csv") && !format.equals("json")) {
             log.error("Unknown format: {}. Supported: csv, json", format);
-            //System.err.println("Unknown format: " + format + ". Supported: csv, json");
             System.exit(1);
         }
 
-        Path inputPath  = Paths.get(INPUT_PATH);
-        Path outputPath = Paths.get(OUTPUT_DIR, "ipaddr." + format);
+        Path inputPath  = Paths.get(config.inputPath());
+        Path outputPath = Paths.get(config.outputDir(), config.outputFilename() + "." + format);
 
         ReportWriter writer = switch (format) {
             case "csv"  -> new CsvReportWriter();
@@ -65,10 +63,8 @@ public class Main {
             writer.write(report, outputPath);
 
             log.info("Report written to: {}", outputPath);
-            //System.out.println("Report written to: " + outputPath);
         } catch (IOException e) {
             log.error("Error: {}", e.getMessage());
-            //System.err.println("Error: " + e.getMessage());
             System.exit(1);
         }
     }
