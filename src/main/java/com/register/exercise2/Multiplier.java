@@ -24,10 +24,22 @@ public class Multiplier {
      * @param n   number of times to add
      * @return result as a new LSB-first digit array
      */
+//    private static int[] addNTimes(int[] big, int n) {
+//        int[] result = new int[]{0};
+//        for (int i = 0; i < n; i++) {
+//            result = BigNumber.add(result, big);
+//        }
+//        return result;
+//    }
+
     private static int[] addNTimes(int[] big, int n) {
         int[] result = new int[]{0};
-        for (int i = 0; i < n; i++) {
-            result = BigNumber.add(result, big);
+        int[] current = big; // inizializzato con il valore da moltiplicare
+
+        while (n > 0) {
+            if (n % 2 == 1) result = BigNumber.add(result, current);
+            current = BigNumber.add(current, current); // raddoppia
+            n /= 2;
         }
         return result;
     }

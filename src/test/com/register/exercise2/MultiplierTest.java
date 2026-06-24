@@ -11,6 +11,11 @@ class MultiplierTest {
     }
 
     @Test
+    void multiply_exerciseExample_15times7returns105() {
+        assertArrayEquals(new int[]{0, 3}, Multiplier.multiply(15, 7));
+    }
+
+    @Test
     void multiply_byZero_returnsZero() {
         assertArrayEquals(new int[]{0}, Multiplier.multiply(5, 0));
     }
